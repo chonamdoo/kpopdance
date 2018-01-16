@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "546296074571",
+    "project_id": "firebase-kpopdance"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546296074571:android:7ee2785ab7412ecb",
+        "android_client_info": {
+          "package_name": "kr.ds.kpopdance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546296074571-0hbr75okuqnv4v8vstamt1hob2fumfk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWjX6GFdqM2VPP2Ybw0DLeT6f24szdIeg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

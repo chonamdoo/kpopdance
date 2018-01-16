@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">무료 아이돌댄스</string>
+    <string name="popupview_null">설치 후 가능 합니다.</string>
+    <string name="finish_message">안녕하세요. 어플 이용해주셔서 감사합니다.\n\n항상 최선을 다해 노력하여 업데이트 하겠습니다.\n\n리뷰와 별점을 주시면 개발자는 많은 힘을 얻을 수 있습니다.\n\n감사합니다.</string>
+    <string name="review">리뷰쓰기</string>
+    <string name="cancel">취소</string>
+    <string name="finish">종료</string>
+    <string name="push">알림 설정</string>
+    <string name="version">Build Version </string>
+    <string name="bookmark_save">즐겨찾기 저장 되었습니다.</string>
+    <string name="bookmark_cancel">즐겨찾기 취소 되었습니다.</string>
+
+    <string name="location_agree">내 위치를 동의하시겠습니까?</string>
+    <string name="location_gps">정확한 현재 위치 설정을 위해 위치 서비스 사용 권한을 켜주세요. </string>
+    <string name="location_success">확인</string>
+    <string name="location_cancel">취소</string>
+    <string name="car_location">길찾기 사용이 가능합니다.</string>
+</resources>
