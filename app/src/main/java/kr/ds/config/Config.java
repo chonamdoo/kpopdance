@@ -6,7 +6,7 @@ public class Config {
 	public Context mContext;
 	
 	public static String URL = "http://parsingsj.cafe24.com/app/";
-	public static String URL_XML = "badmiton/";
+	public static String URL_XML = "kpopdance/";
 	public static String URL_LIST = "list.php";
 	public static String URL_SEARCH = "search.php";
 	public static String URL_BOOKMARK = "bookmark.php";
@@ -14,6 +14,7 @@ public class Config {
 	public static String URL_RECOM = "recom.php";
 	public static String URL_LOG = "log.php";
 	public static String URL_DOWN = "/link/down.php";
+	public static String URL_TEMA = "tema.php";
 
 	public static String URL_MAIN1 = "main_1.php";
 	public static String URL_MAIN2 = "main_2.php";

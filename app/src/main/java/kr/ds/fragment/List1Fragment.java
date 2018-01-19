@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import io.github.yavski.fabspeeddial.FabSpeedDial;
 import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 import kr.ds.adapter.ListAdapter;
+import kr.ds.handler.TemaHandler;
 import kr.ds.kpopdance.SubActivity;
 import kr.ds.kpopdance.WebViewActivity;
 import kr.ds.config.Config;
@@ -41,13 +42,14 @@ import kr.ds.handler.WebHandler;
 import kr.ds.utils.DsObjectUtils;
 import kr.ds.utils.SharedPreference;
 import kr.ds.view.DsBottomDialog;
+import kr.ds.view.TemaView;
 import kr.ds.widget.AdAdmobNativeView;
 
 
 /**
  * Created by Administrator on 2016-08-31.
  */
-public class List1Fragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class List1Fragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
 
     private ArrayList<ListHandler> mData;
     private ArrayList<ListHandler> mMainData;
@@ -75,6 +77,16 @@ public class List1Fragment extends BaseFragment implements SwipeRefreshLayout.On
 
     private String mList_type = "1";
 
+    private DsBottomDialog mDsBottomDialog;
+    private TemaView mTemaView;
+    private ImageView mImageViewT;
+    private String muid = "";
+    private TemaHandler mTemaHandler;
+    private int mTemaSelectPosition = 0;
+    private String mname ="";
+    private TextView mTextViewTop;
+
+
 
 
     @Override
@@ -90,9 +102,8 @@ public class List1Fragment extends BaseFragment implements SwipeRefreshLayout.On
 
         mView = inflater.inflate(R.layout.fragment_list1, null);
 
-
-
-
+        (mImageViewT = (ImageView) mView.findViewById(R.id.imageView_menut)).setOnClickListener(this);
+        mTextViewTop = (TextView) mView.findViewById(R.id.textView_top_name);
 
         mFabSpeedDial = (FabSpeedDial) mView.findViewById(R.id.fab_speed_dial);
         mFabSpeedDial.setMenuListener(new SimpleMenuListenerAdapter() {
@@ -102,13 +113,13 @@ public class List1Fragment extends BaseFragment implements SwipeRefreshLayout.On
                 switch (menuItem.getItemId()){
                     case R.id.action_1:
                         mList_type = "1";
-                        mParam = "?list_type="+mList_type;
+                        mParam = "?list_type="+mList_type+"&cd_uid="+muid;
                         mProgressBar.setVisibility(View.VISIBLE);
                         setList();
                         break;
                     case R.id.action_2:
                         mList_type = "2";
-                        mParam = "?list_type="+mList_type;
+                        mParam = "?list_type="+mList_type+"&cd_uid="+muid;
                         mProgressBar.setVisibility(View.VISIBLE);
                         setList();
                         break;
@@ -156,7 +167,7 @@ public class List1Fragment extends BaseFragment implements SwipeRefreshLayout.On
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
-        mParam = "?list_type="+mList_type;
+        mParam = "?list_type="+mList_type+"&cd_uid="+muid;
         mProgressBar.setVisibility(View.VISIBLE);
         setList();
         mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -315,5 +326,44 @@ public class List1Fragment extends BaseFragment implements SwipeRefreshLayout.On
     @Override
     public void Tab(int tab) {
 
+    }
+
+    public void setTemaView(){
+        mTemaView = new TemaView(mContext).setParam("").setSelectPosition(mTemaSelectPosition).setCallBack(new TemaView.ResultListner() {
+
+            @Override
+            public <T> void onReturn(Object data, int position) {
+                if(mDsBottomDialog != null) {
+                    mDsBottomDialog.dismiss();
+                }
+                if(!DsObjectUtils.isEmpty(data)){
+
+                    mTemaHandler = (TemaHandler) data;
+                    muid = mTemaHandler.getUid();
+                    mname = mTemaHandler.getName();
+                    mTemaSelectPosition = position;
+                    mParam = "?list_type="+mList_type+"&cd_uid="+muid;
+                    mProgressBar.setVisibility(View.VISIBLE);
+                    mTextViewTop.setText(mname);
+                    setList();
+                }
+            }
+
+            @Override
+            public void onComplete() {
+                mDsBottomDialog = new DsBottomDialog.Builder(mContext).setIcon(R.mipmap.x).setTitle("가수 선택").setContent(null).setCustomView(mTemaView).build();
+                mDsBottomDialog.show();
+            }
+        }).init(mContext);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.imageView_menut:
+                setTemaView();
+                break;
+        }
     }
 }

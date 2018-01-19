@@ -10,9 +10,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="48dip"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_top"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="15dip"
+        android:paddingTop="15dip">
 
 
 
@@ -21,10 +23,18 @@
             android:id="@+id/textView_top_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="레슨"
+            android:text="DANCE"
             android:textColor="#ffffff"
             android:textSize="15sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView_menut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dip"
+            android:src="@mipmap/icon_menu_p" />
 
 
     </RelativeLayout>
